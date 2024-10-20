@@ -1,0 +1,44 @@
+[
+    {
+        "id": "LizardLv1",
+        "name": "Lizard",
+        "attributes": {
+            "movementSpeed": 2,
+            "maxHitPoints": 25,
+            "baseDamage": 3
+        },
+        "textureName": "Lizard"
+    },
+    {
+        "id": "LizardLv2",
+        "name": "Lizard",
+        "attributes": {
+            "movementSpeed": 2,
+            "maxHitPoints": 40,
+            "baseDamage": 3
+        },
+        "textureName": "Lizard2"
+    },
+    {
+        "id": "LizardLv1Boss",
+        "name": "Lizard",
+        "attributes": {
+            "movementSpeed": 2,
+            "maxHitPoints": 150,
+            "baseDamage": 5,
+            "scale": 2
+        },
+        "textureName": "Lizard"
+    },
+    {
+        "id": "LizardLv2Boss",
+        "name": "Lizard",
+        "attributes": {
+            "movementSpeed": 2,
+            "maxHitPoints": 250,
+            "baseDamage": 7,
+            "scale": 2
+        },
+        "textureName": "Lizard2"
+    }
+]

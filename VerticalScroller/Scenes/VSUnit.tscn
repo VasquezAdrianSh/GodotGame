@@ -1,0 +1,74 @@
+[gd_scene load_steps=10 format=3 uid="uid://dl1nwasv6dlxa"]
+
+[ext_resource type="Script" path="res://VerticalScroller/Scripts/VSUnits/VSPlayerUnit.cs" id="1_up2pn"]
+[ext_resource type="Texture2D" uid="uid://7fgk7abkcv1u" path="res://Art/Basic Asset Pack/Basic Humanoid Animations/goblin occultist/GoblinOccultist.png" id="2_c4puo"]
+[ext_resource type="PackedScene" uid="uid://bh5lo8eo1jyfg" path="res://Templates/UnitAreas.tscn" id="3_jeonj"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4p3cl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t3q6a"]
+atlas = ExtResource("2_c4puo")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0csr"]
+atlas = ExtResource("2_c4puo")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_siuas"]
+atlas = ExtResource("2_c4puo")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qi6to"]
+atlas = ExtResource("2_c4puo")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ejcnj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t3q6a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w0csr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_siuas")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qi6to")
+}],
+"loop": true,
+"name": &"idleDown",
+"speed": 5.0
+}]
+
+[node name="Unit" type="CharacterBody3D"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0.25, 0)
+collision_layer = 2
+collision_mask = 2
+axis_lock_linear_y = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+script = ExtResource("1_up2pn")
+
+[node name="BodyCollision" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_4p3cl")
+
+[node name="StaticRotation" type="Node3D" parent="."]
+
+[node name="OverheadLabel" type="Label3D" parent="StaticRotation"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+outline_modulate = Color(0.341176, 0.709804, 0.972549, 1)
+text = "Test
+"
+font_size = 84
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="StaticRotation"]
+pixel_size = 0.1
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_ejcnj")
+animation = &"idleDown"
+frame_progress = 0.839854
+
+[node name="Areas" parent="." instance=ExtResource("3_jeonj")]

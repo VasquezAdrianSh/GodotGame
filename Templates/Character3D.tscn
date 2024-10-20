@@ -1,0 +1,213 @@
+[gd_scene load_steps=28 format=3 uid="uid://b0gnd6djt5q6f"]
+
+[ext_resource type="Script" path="res://Scripts/Actor/AxisUnit/AxisUnit.cs" id="1_7fe2h"]
+[ext_resource type="SpriteFrames" uid="uid://brxi6sc2re2r1" path="res://MeshesLibrary/SpriteFrames/Player.tres" id="2_yo2df"]
+[ext_resource type="Texture2D" uid="uid://bh1f3sqasqgue" path="res://Art/Retro Impact Effect Pack ALL/Retro Impact Effect Pack 2 A.png" id="3_irvvs"]
+[ext_resource type="Texture2D" uid="uid://dyh7j0robi0mi" path="res://Art/Retro Impact Effect Pack ALL/Retro Impact Effect Pack 3 C.png" id="4_6vqsm"]
+[ext_resource type="Texture2D" uid="uid://o8dtytaqrbcf" path="res://Art/Retro Impact Effect Pack ALL/images/Retro Impact Effect Pack 2 D_0.png" id="5_hqfel"]
+[ext_resource type="Script" path="res://Scripts/Actor/AxisUnit/AttackCollisionArea.cs" id="6_5c4ra"]
+[ext_resource type="Texture2D" uid="uid://b8n51425dpvj7" path="res://Art/Retro Impact Effect Pack ALL/images/Retro Impact Effect Pack 2 D_50.png" id="7_3g54y"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k1dhj"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4qoob"]
+margin = 0.45
+radius = 0.3
+height = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xa2nd"]
+atlas = ExtResource("3_irvvs")
+region = Rect2(576, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0oov8"]
+atlas = ExtResource("3_irvvs")
+region = Rect2(512, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_46sxj"]
+atlas = ExtResource("3_irvvs")
+region = Rect2(448, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6fifr"]
+atlas = ExtResource("3_irvvs")
+region = Rect2(384, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rtuxn"]
+atlas = ExtResource("3_irvvs")
+region = Rect2(320, 448, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nemko"]
+atlas = ExtResource("4_6vqsm")
+region = Rect2(160, 640, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d8gam"]
+atlas = ExtResource("4_6vqsm")
+region = Rect2(128, 640, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvu5h"]
+atlas = ExtResource("4_6vqsm")
+region = Rect2(96, 640, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rar2e"]
+atlas = ExtResource("4_6vqsm")
+region = Rect2(64, 640, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_faty8"]
+atlas = ExtResource("4_6vqsm")
+region = Rect2(32, 640, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u2ccn"]
+atlas = ExtResource("4_6vqsm")
+region = Rect2(0, 640, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5acxl"]
+atlas = ExtResource("4_6vqsm")
+region = Rect2(96, 608, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g58v2"]
+atlas = ExtResource("4_6vqsm")
+region = Rect2(128, 608, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvw3r"]
+atlas = ExtResource("4_6vqsm")
+region = Rect2(160, 608, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a2qyq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xa2nd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0oov8")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_46sxj")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_6fifr")
+}, {
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_rtuxn")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"Attack",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_nemko")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_d8gam")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_fvu5h")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_rar2e")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_faty8")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_u2ccn")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_5acxl")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_g58v2")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_mvw3r")
+}],
+"loop": true,
+"name": &"Cast",
+"speed": 30.0
+}]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_du2ya"]
+transparency = 1
+albedo_texture = ExtResource("5_hqfel")
+uv2_scale = Vector3(3, 2, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_nkvd1"]
+lightmap_size_hint = Vector2i(12, 12)
+material = SubResource("StandardMaterial3D_du2ya")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qm7j3"]
+
+[node name="Character" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+collision_layer = 2
+collision_mask = 3
+wall_min_slide_angle = 3.14159
+floor_stop_on_slope = false
+floor_block_on_wall = false
+platform_wall_layers = 1
+script = ExtResource("1_7fe2h")
+
+[node name="InteractionArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea"]
+shape = SubResource("BoxShape3D_k1dhj")
+
+[node name="BodyCollision" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_4qoob")
+
+[node name="StaticRotation" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="StaticRotation"]
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0, 0, 0)
+shaded = true
+sprite_frames = ExtResource("2_yo2df")
+animation = &"idleDown"
+
+[node name="OverheadLabel" type="Label3D" parent="StaticRotation"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.712326, 0)
+outline_modulate = Color(0.341176, 0.709804, 0.972549, 1)
+text = "Test
+"
+
+[node name="RotationAnchor" type="Node3D" parent="."]
+
+[node name="Effects" type="AnimatedSprite3D" parent="RotationAnchor"]
+transform = Transform3D(2.5573, 0, 0, 0, -9.23613e-08, -2.80875, 0, 2.11298, -1.22774e-07, 0.204003, 0.126274, 0.218113)
+sprite_frames = SubResource("SpriteFrames_a2qyq")
+animation = &"Attack"
+frame = 6
+frame_progress = 1.0
+
+[node name="FaceDirection" type="MeshInstance3D" parent="RotationAnchor"]
+transform = Transform3D(0.0480171, 0, 0, 0, 0.724436, 0, 0, 0, 0.656425, 0.673675, 0.00561327, -0.0036031)
+
+[node name="Floor" type="MeshInstance3D" parent="RotationAnchor"]
+transform = Transform3D(0.0897915, 0, 0, 0, 0.051505, 0, 0, 0, 0.233067, 0.397278, -0.325, 0)
+mesh = SubResource("PlaneMesh_nkvd1")
+
+[node name="AttackArea" type="Area3D" parent="RotationAnchor"]
+monitoring = false
+script = ExtResource("6_5c4ra")
+
+[node name="MeleeCollisionArea" type="CollisionShape3D" parent="RotationAnchor/AttackArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0, 0)
+shape = SubResource("BoxShape3D_qm7j3")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_desired_distance = 0.1
+target_desired_distance = 0.1
+path_max_distance = 0.01
+keep_y_velocity = false
+debug_enabled = true
+
+[node name="NavigationTarget" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.15, 0)
+visible = false
+texture = ExtResource("7_3g54y")

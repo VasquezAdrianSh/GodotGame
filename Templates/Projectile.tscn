@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://euwk4mdeovi5"]
+
+[ext_resource type="Script" path="res://Scripts/Actor/EffectUnit/ProjectileUnit.cs" id="1_lcppc"]
+[ext_resource type="PackedScene" uid="uid://cilo708fdco00" path="res://Templates/AreaRange.tscn" id="2_jr34q"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8kucw"]
+margin = 0.45
+radius = 0.3
+height = 1.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_f0myg"]
+
+[node name="Projectile" type="CharacterBody3D"]
+collision_layer = 0
+collision_mask = 0
+input_ray_pickable = false
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+motion_mode = 1
+script = ExtResource("1_lcppc")
+
+[node name="BodyCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_8kucw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+mesh = SubResource("SphereMesh_f0myg")
+
+[node name="AreaRange" parent="." instance=ExtResource("2_jr34q")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+collision_layer = 8
+collision_mask = 7
+input_ray_pickable = false
+monitorable = true

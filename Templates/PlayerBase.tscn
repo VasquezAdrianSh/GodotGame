@@ -1,0 +1,150 @@
+[gd_scene load_steps=16 format=3 uid="uid://b6ajx743pvfx"]
+
+[ext_resource type="Script" path="res://Scripts/Player/RealTimeStrategy/RealTimeStrategyPlayer.cs" id="1_w2jw0"]
+[ext_resource type="Script" path="res://Scripts/Game/CameraBase.cs" id="2_7o631"]
+[ext_resource type="Script" path="res://Scripts/UI/InteractionPanel.cs" id="3_aodfl"]
+[ext_resource type="Script" path="res://Scripts/UI/SelectionPanel.cs" id="4_co5sg"]
+[ext_resource type="Script" path="res://Scripts/Player/RealTimeStrategy/RTSCamera.cs" id="5_bgae1"]
+[ext_resource type="PackedScene" uid="uid://bo2xgiyxdolci" path="res://Templates/AbilityBtn.tscn" id="5_vmhrf"]
+[ext_resource type="Script" path="res://Scripts/Player/RealTimeStrategy/RTSSelection.cs" id="6_wb7p4"]
+[ext_resource type="Script" path="res://Scripts/Player/RealTimeStrategy/RTSNavigation.cs" id="7_0mbkk"]
+[ext_resource type="Script" path="res://Scripts/Player/RealTimeStrategy/UI/RTSUI.cs" id="7_7clqt"]
+[ext_resource type="Texture2D" uid="uid://c10k03qykxn1p" path="res://Art/Retro Impact Effect Pack ALL/images/Retro Impact Effect Pack 2 D_26.png" id="9_fmtku"]
+[ext_resource type="Script" path="res://Scripts/Player/PlayerAbility/PlayerAbility.cs" id="9_mqfki"]
+[ext_resource type="Script" path="res://Scripts/Player/PlayerSelection.cs" id="11_tenay"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_nycjr"]
+points = PackedVector3Array(-1, 0, -1, 1, 0, -1, -1, 0, 1, 1, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b85au"]
+transparency = 1
+albedo_texture = ExtResource("9_fmtku")
+emission_enabled = true
+emission = Color(0.905882, 0.894118, 0.807843, 1)
+uv1_scale = Vector3(3, 2, 1)
+uv2_scale = Vector3(3, 2, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_n636x"]
+material = SubResource("StandardMaterial3D_b85au")
+
+[node name="Player" type="Node3D"]
+process_mode = 3
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+script = ExtResource("1_w2jw0")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+projection = 1
+current = true
+fov = 46.9
+script = ExtResource("2_7o631")
+cameraVelocity = 5.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+follow_viewport_enabled = true
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InteractionPanel" type="HBoxContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -100.0
+offset_right = 50.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+script = ExtResource("3_aodfl")
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/InteractionPanel"]
+layout_mode = 2
+
+[node name="SelectionPanel" type="Panel" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_right = 10.0
+offset_bottom = 10.0
+script = ExtResource("4_co5sg")
+
+[node name="SelectedUnitInfo" type="RichTextLabel" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_right = 324.0
+offset_bottom = 172.0
+
+[node name="AbilityBtn" parent="CanvasLayer/Control" instance=ExtResource("5_vmhrf")]
+layout_mode = 1
+offset_left = -534.0
+offset_top = -154.0
+offset_right = -373.0
+offset_bottom = -59.0
+assignedKey = 81
+
+[node name="AbilityBtn2" parent="CanvasLayer/Control" instance=ExtResource("5_vmhrf")]
+layout_mode = 1
+offset_left = -338.0
+offset_top = -153.0
+offset_right = -177.0
+offset_bottom = -58.0
+assignedKey = 87
+
+[node name="AbilityBtn3" parent="CanvasLayer/Control" instance=ExtResource("5_vmhrf")]
+layout_mode = 1
+offset_left = -147.0
+offset_top = -152.0
+offset_right = 14.0
+offset_bottom = -57.0
+assignedKey = 69
+
+[node name="AbilityBtn4" parent="CanvasLayer/Control" instance=ExtResource("5_vmhrf")]
+layout_mode = 1
+offset_left = 40.0
+offset_top = -150.0
+offset_right = 201.0
+offset_bottom = -55.0
+assignedKey = 82
+
+[node name="RTSCamera" type="Node" parent="."]
+script = ExtResource("5_bgae1")
+enableMoveOnEdge = false
+
+[node name="RTSUI" type="Node" parent="."]
+script = ExtResource("7_7clqt")
+
+[node name="RTSSelection" type="Node" parent="."]
+script = ExtResource("6_wb7p4")
+
+[node name="SelectionCast" type="ShapeCast3D" parent="RTSSelection"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+shape = SubResource("ConvexPolygonShape3D_nycjr")
+collision_mask = 2
+collide_with_bodies = false
+
+[node name="RTSNavigation" type="Node" parent="."]
+script = ExtResource("7_0mbkk")
+
+[node name="Ability" type="Node" parent="."]
+script = ExtResource("9_mqfki")
+
+[node name="AbilityIndicator" type="MeshInstance3D" parent="Ability"]
+process_mode = 3
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+mesh = SubResource("SphereMesh_n636x")
+skeleton = NodePath("../..")
+
+[node name="Selection" type="Node" parent="Ability"]
+script = ExtResource("11_tenay")
+
+[node name="SelectionCast" type="ShapeCast3D" parent="Ability/Selection"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+shape = SubResource("ConvexPolygonShape3D_nycjr")
+collision_mask = 2
+collide_with_bodies = false

@@ -1,0 +1,77 @@
+[
+    {
+        "name": "Tsukugi",
+        "attributes": {
+            "movementSpeed": 3,
+            "maxHitPoints": 1313,
+            "attackSpeed": 1,
+            "armor": 2,
+            "baseDamage": 3,
+            "attackCastDuration": 0.3,
+            "attackRange": 1
+        },
+        "abilities": [
+            "Fireball",
+            "ThrowMultiRock"
+        ]
+    },
+    {
+        "name": "Guard",
+        "attributes": {
+            "movementSpeed": 2,
+            "maxHitPoints": 1000,
+            "attackSpeed": 1,
+            "armor": 2,
+            "baseDamage": 3,
+            "attackCastDuration": 0.3,
+            "attackRange": 1
+        },
+        "abilities": []
+    },
+    {
+        "name": "Healer",
+        "attributes": {
+            "movementSpeed": 1,
+            "maxHitPoints": 500,
+            "attackSpeed": 0.2,
+            "armor": 1,
+            "baseDamage": 3,
+            "attackCastDuration": 0.3,
+            "attackRange": 1
+        },
+        "abilities": [
+            "Heal",
+            "HealArea"
+        ]
+    },
+    {
+        "name": "Tsukita",
+        "attributes": {
+            "movementSpeed": 1,
+            "maxHitPoints": 200,
+            "attackSpeed": 1,
+            "armor": 1,
+            "baseDamage": 3,
+            "attackCastDuration": 0,
+            "attackRange": 1
+        },
+        "abilities": [
+            "Heal"
+        ]
+    },
+    {
+        "name": "Tsuki",
+        "attributes": {
+            "movementSpeed": 2,
+            "maxHitPoints": 150,
+            "attackSpeed": 1,
+            "armor": 2,
+            "baseDamage": 3,
+            "attackCastDuration": 0,
+            "attackRange": 1
+        },
+        "abilities": [
+            "Heal"
+        ]
+    }
+]
